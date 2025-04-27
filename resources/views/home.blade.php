@@ -20,7 +20,7 @@
                 <br>
                 <button type="button" onclick="window.location='{{ URL::route('posts.index') }}'">POSTS</button>
                 <br>
-                <button type="button" onclick="window.location='{{ URL::route('posts.index') }}'">OTHER</button>
+                <button type="button" onclick="window.location='{{ URL::route('notes.index') }}'">NOTES</button>
 
 
             </div>
