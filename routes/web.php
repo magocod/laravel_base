@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,3 +29,4 @@ Route::resource('posts', PostController::class);
 
 Route::resource('notes', NoteController::class);
 
+Route::resource('products', ProductController::class);
