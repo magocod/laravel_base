@@ -3,7 +3,28 @@
 @section('content')
 
     <div class="card mt-5">
-        <h2 class="card-header">Laravel 12 CRUD Example</h2>
+        <div class="card-body">
+            <form action="{{ route('products.index') }}" method="get">
+
+                <div class="form-group">
+                    <label for="search">Search</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="search"
+                        name="search"
+                    >
+                </div>
+
+                <br>
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </form>
+        </div>
+
+    </div>
+
+    <div class="card mt-5">
+        <h2 class="card-header">Laravel 12 CRUD Example (search: {{ $search }})</h2>
         <div class="card-body">
 
             @session('success')
@@ -53,7 +74,10 @@
 
             </table>
 
-            {!! $products->links() !!}
+            {!! $products->withQueryString()->links() !!}
+
+            <br>
+            Total: {{ $products->total() }}
 
         </div>
     </div>

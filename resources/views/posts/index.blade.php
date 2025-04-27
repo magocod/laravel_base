@@ -25,12 +25,25 @@
                             </div>
                             <div class="card-body">
                                 <p class="card-text">{{ $post->body }}</p>
+
+                                <br>
+
+                                <p class="card-text">Comments</p>
+
+                                @foreach ($post->comments as $comment)
+                                    <br>
+                                    <button type="button">{{ $comment->content }} - {{ $comment->title }}</button>
+                                @endforeach
+
+
                             </div>
                             <div class="card-footer">
                                 <div class="row">
                                     <div class="col-sm">
                                         <a href="{{ route('posts.edit', $post->id) }}"
                                            class="btn btn-primary btn-sm">Edit</a>
+                                        <a href="{{ route('comments.index', ['post_id' => $post->id]) }}"
+                                           class="btn btn-primary btn-sm">Comments</a>
                                     </div>
                                     <div class="col-sm">
                                         <form action="{{ route('posts.destroy', $post->id) }}" method="post">

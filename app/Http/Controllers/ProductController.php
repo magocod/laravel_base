@@ -14,9 +14,18 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::latest()->paginate(5);
+        $query = Product::query();
 
-        return view('products.index', compact('products'))
+        $search = request()->input('search');
+
+        if (request()->filled('search')) {
+//            $query->where('name', 'ilike', '%' . $search . '%');
+            $query->where('name', 'LIKE', "%{$search}%");
+        }
+
+        $products = $query->latest()->paginate(5);
+
+        return view('products.index', compact('products', 'search'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
